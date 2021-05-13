@@ -18,6 +18,7 @@
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -43,9 +44,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profiel.html">Profiel</a>
-            </li>
         </ul>
         </div>
       </div>
@@ -57,6 +55,9 @@
           <div class="card ">
             <div class="card-header ">
               <h5 class="card-title font-weight-bold space text-secondary">Exams</h5>
+              <p class="card-category"><button type="button" class="btn float-right" data-toggle="modal" data-target="#add" style="background-color: #6b7cd1;">
+                examen Toevoegen
+            </button></p>
             </div>
             <div class="card-body ">
               <table class="table">
@@ -73,19 +74,19 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>2 uren</td>
-                    <td><a href="#" class="view"><i class="nc-icon nc-button-play font-weight-bold" data-toggle="modal" data-target="#start" style="color: #5166ce;"></i></a></td>
+                    <td><a href="#" class="view"><i class="nc-icon nc-simple-add font-weight-bold" data-toggle="modal" data-target="#edit" style="color: #5166ce;"></i></a></td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>2 uren</td>
-                    <td><a href="#" class="view"><i class="nc-icon nc-button-play font-weight-bold" data-toggle="modal" data-target="#start" style="color: #5166ce;"></i></a></td>
+                    <td><a href="#" class="view"><i class="nc-icon nc-simple-add font-weight-bold" data-toggle="modal" data-target="#edit" style="color: #5166ce;"></i></a></td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td>Larry</td>
                     <td>2 uren</td>
-                    <td><a href="#" class="view"><i class="nc-icon nc-button-play font-weight-bold" data-toggle="modal" data-target="#start" style="color: #5166ce;"></i></a></td>
+                    <td><a href="#" class="view"><i class="nc-icon nc-simple-add font-weight-bold" data-toggle="modal" data-target="#edit" style="color: #5166ce;"></i></a></td>
                   </tr>
                 </tbody>
               </table>
@@ -94,14 +95,22 @@
         </div>
       </div>
     </div>
+    <footer class="footer footer-black  footer-white ">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="footer-nav">
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
 
-
-    <!-- Modal -->
-<div class="modal fade" id="start" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Beginnen met examen?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -109,17 +118,58 @@
       <div class="modal-body">
         <form action="" method="post" name="login">
           <div class="form-group">
-            <label>Subject:</label><span style="float: right;">Wiskunde</span>
+             <input type="text" name="subject"  class="form-control my-input" id="subject" placeholder="Subject">
           </div>
           <div class="form-group">
-            <label>Duration:</label><span style="float: right;">2 Uren</span>
+             <input type="text" name="duration"  class="form-control my-input" id="duration" placeholder="Duration">
           </div>
+          <div class="custom-file-upload text-center" style="background-color: #5166ce;">
+        <label for="file-upload" class="custom-file-upload1">
+            <i class="fa fa-cloud-upload"></i> Import vragen
+        </label>
+        <input id="file-upload" type="file"/>
+        </div>
        </form>
 
       </div>
-      <div class="modal-footer content-center">
+      <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn " style="background-color: #5166ce;">Beginnen</button>
+        <button type="button" class="btn " style="background-color: #5166ce;">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" name="login">
+          <div class="form-group">
+             <input type="text" name="subject"  class="form-control my-input" id="subject" placeholder="Subject">
+          </div>
+          <div class="form-group">
+             <input type="text" name="duration"  class="form-control my-input" id="duration" placeholder="Duration">
+          </div>
+          <div class="custom-file-upload text-center" style="background-color: #5166ce;">
+        <label for="file-upload" class="custom-file-upload1">
+            <i class="fa fa-cloud-upload"></i> Import vragen
+        </label>
+        <input id="file-upload" type="file"/>
+        </div>
+       </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn " style="background-color: #5166ce;">Save changes</button>
       </div>
     </div>
   </div>
@@ -130,15 +180,14 @@
 
 
 
-    <footer class="footer footer-black  footer-white ">
-      <div class="container-fluid">
-        <div class="row">
-          <nav class="footer-nav">
-          </nav>
-        </div>
-      </div>
-    </footer>
-  </div>
+
+
+
+
+
+
+
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>

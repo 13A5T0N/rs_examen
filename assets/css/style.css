@@ -211,3 +211,18 @@ h2 {
   background-color: #7e0cf5;
   opacity: 0.2;
 }
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+.custom-file-upload .custom-file-upload1 {
+  /* border: 1px solid #ccc; */
+  display: inline-block;
+  padding: 12px 12px;
+  cursor: pointer;
+  color: white;
+}
+
+.space {
+  float: left;
+}
