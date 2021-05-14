@@ -45,3 +45,14 @@ klas int,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+create table vragen(
+vraag_id int primary key auto_increment,
+examen int, 
+vraag varchar(255),
+ant_1 varchar(255),
+ant_2 varchar(255),
+ant_3 varchar(255),
+ant_4 varchar(255),
+cor_ant int(10)
+);
