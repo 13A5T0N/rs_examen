@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Home | RS-Examen</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!--     Fonts and icons     -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body class="">
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav
+        class="
+          navbar navbar-expand-lg navbar-absolute
+          fixed-top
+          navbar-transparent
+        "
+      >
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a
+              class="navbar-brand font-weight-bold"
+              href="javascript:;"
+              style="text-transform: uppercase; color: #5166ce"
+              >Examination</a
+            >
+          </div>
+          <ul class="nav navbar-nav font-weight-bold">
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="klas.html">Klas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="student.html">Studenten</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="">Vakken</a>
+            </li>
+          </ul>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navigation"
+          >
+            <form>
+              <div class="input-group no-border">
+                <input
+                  type="text"
+                  value=""
+                  class="form-control"
+                  placeholder="Search..."
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="nc-icon nc-zoom-split"></i>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title font-weight-bold space text-secondary">
+                  Klassen
+                </h5>
+                <p class="card-category">
+                  <button
+                    type="button"
+                    class="btn float-right"
+                    data-toggle="modal"
+                    data-target="#add"
+                    style="background-color: #6b7cd1"
+                  >
+                    Vak Toevoegen
+                  </button>
+                </p>
+              </div>
+              <div class="card-body">
+                <table class="table" id="table">
+                  <thead
+                    class="thead"
+                    style="background-color: #6b7cd1; color: #fff"
+                  >
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Vak</th>
+                    </tr>
+                  </thead>
+                  <tbody class="font-weight-bold" id="data"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer footer-black footer-white">
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="footer-nav"></nav>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="add"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Klas modal</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input
+                type="text"
+                name="subject"
+                class="form-control my-input"
+                id="vak"
+                placeholder="vak"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              onclick="add_vak()"
+              data-dismiss="modal"
+              class="btn"
+              style="background-color: #5166ce"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script
+      src="../assets/js/paper-dashboard.min.js?v=2.0.1"
+      type="text/javascript"
+    ></script>
+    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+        demo.initChartsPages();
+      });
+    </script>
+    <script>
+      function get_vak() {
+        $.ajax({
+          type: "GET",
+          url: "http://127.0.0.1:5000/vak",
+          dataType: "JSON",
+          success: function (data) {
+            for(var i=0; i<data.length; i++){
+                var row = $('<tr><td>'+ data[i].vak_id+'</td><td>'+data[i].vak_naam+'</td></tr>')
+                $('#data').append(row)
+            }
+          },
+        });
+      }
+      get_vak();
+      
+     function get_latest(){
+        $.ajax({
+          type: "GET",
+          url: "http://127.0.0.1:5000/vak/latest",
+          dataType: "JSON",
+          success: function (data) {
+            for(var i=0; i<data.length; i++){
+                var row = $('<tr><td>'+ data[i].vak_id+'</td><td>'+data[i].vak_naam+'</td></tr>')
+                $('#data').append(row)
+            }
+          },
+        });
+     }
+
+      function add_vak(){
+        vak = document.getElementById("vak").value 
+        $.ajax({
+          type: "POST",
+          url: "http://127.0.0.1:5000/vak/add",
+          data:{
+              vak_naam: vak
+          },
+          dataType: "JSON",
+          success: function (data) {
+            get_latest();
+          },
+        });
+        
+      }
+      
+    </script>
+  </body>
+</html>

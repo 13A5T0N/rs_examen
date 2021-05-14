@@ -46,7 +46,7 @@ var viewingAns = 0;
 var correctAnswers = 0;
 var quizOver = false;
 var iSelectedAnswer = [];
-	var c=180;
+	var c=2700;
 	var t;
 $(document).ready(function () 
 {

@@ -1,70 +1,129 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="../assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../assets/fonts/icomoon/style.css" />
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
 
     <!-- Bootstrap CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-    
+
     <!-- Style -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css" />
 
     <title>Login | RS-Examen</title>
   </head>
   <body>
-  
-
-  <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('../assets/img/bg_1.jpg');"></div>
-    <div class="contents order-2 order-md-1">
-
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-7">
-            <h3>Login for <strong>Exams</strong></h3>
-            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-            <form action="#" method="post">
+    <div class="d-lg-flex half">
+      <div
+        class="bg order-1 order-md-2"
+        style="background-image: url('../assets/img/bg_1.jpg')"
+      ></div>
+      <div class="contents order-2 order-md-1">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7">
+              <h3>Login for <strong>Exams</strong></h3>
+              <p class="mb-4">
+                Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
+                consectetur adipisicing.
+              </p>
               <div class="form-group first">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="your-email@gmail.com"
+                  id="username"
+                />
               </div>
               <div class="form-group last mb-3">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Your Password" id="password">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Your Password"
+                  id="password"
+                />
               </div>
-              
+
               <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                  <input type="checkbox" checked="checked"/>
+                <label class="control control--checkbox mb-0"
+                  ><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked" />
                   <div class="control__indicator"></div>
                 </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                <span class="ml-auto"
+                  ><a href="#" class="forgot-pass">Forgot Password</a></span
+                >
               </div>
-
-              <input type="submit" value="Log In" class="btn btn-block" style="background-color: #5166ce;">
-
-            </form>
+              <button class="btn btn-block btn-success" onclick="login()">
+                Login in
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    
-  </div>
-    
-    
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie =
+          name +
+          "=" +
+          (value || "") +
+          expires +
+          "; ,{serure : true}, samesite:strict path=/";
+      }
+
+      function login() {
+        email = document.getElementById("username").value;
+        pwd = document.getElementById("password").value;
+        $.ajax({
+          type: "POST",
+          url: "http://127.0.0.1:5000/login",
+          data: {
+            email: email,
+            pwd: pwd,
+          },
+          dataType: "JSON",
+          success: function (data) {
+            console.log(data.geb_id);
+            if (data.geb_id >= 1) {
+              setCookie("gebruiker", data.geb_id, 1);
+              if (data.geb_rol == "admin") {
+                window.location.replace("admin.html");
+              } else {
+                window.location.replace("home.html");
+              }
+            } else {
+            }
+          },
+        });
+      }
+    </script>
   </body>
 </html>

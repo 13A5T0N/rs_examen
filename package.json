@@ -13,5 +13,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-open": "^3.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }
