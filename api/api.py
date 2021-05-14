@@ -79,8 +79,11 @@ def add_examen():
     titel = request.form.get('titel')
     vak = request.form.get('vak')
     klas = request.form.get('klas')
+    file = request.form.get('file')
     examen.add_examen(db,titel,vak,klas)
+    examen.add_antw(db,file)
     return jsonify('true')
+
 @app.after_request
 def after_request(response):
   response.headers.set('Access-Control-Allow-Origin', '*')
