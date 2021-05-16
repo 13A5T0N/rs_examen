@@ -205,7 +205,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="" method="post" name="login">
+            <form
+              action="http://127.0.0.1:5000/vragen/upload"
+              enctype="multipart/form-data"
+              method="post"
+              name="login"
+            >
               <div class="form-group">
                 <input
                   type="text"
@@ -231,22 +236,25 @@
                 <label for="file-upload" class="custom-file-upload1">
                   <i class="fa fa-cloud-upload"></i> Import vragen
                 </label>
-                <input id="file-upload" type="file" />
+                <input id="file-upload" name="file-upload" type="file" />
               </div>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn"
+                style="background-color: #5166ce"
+              >
+                Save changes
+              </button>
             </form>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn" style="background-color: #5166ce">
-              Save changes
-            </button>
-          </div>
+          <div class="modal-footer"></div>
         </div>
       </div>
     </div>
@@ -323,9 +331,8 @@
               Close
             </button>
             <button
-              type="button"
+              type="submit"
               class="btn"
-              onclick="uplaod_examen()"
               data-dismiss="modal"
               style="background-color: #5166ce"
             >
