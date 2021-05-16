@@ -1,11 +1,15 @@
-import user ,flask,conn,vakken,klassen,examen
+import os,user ,flask,conn,vakken,klassen,examen
 from flask import * 
+from werkzeug.utils import secure_filename
 
 # declare variables
 db = conn.cursor
 
+
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
+app.config['UPLOAD_PATH'] = 'uploads'
+app.config['UPLOAD_EXTENSIONS'] = ['.csv']
 
 @app.route('/', methods=['GET'])
 def home():
@@ -88,4 +92,18 @@ def after_request(response):
   response.headers.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
   return response 
 
+@app.route('/vragen/upload', methods=['POST'])
+def import_vragen():
+    if request.files["file-upload"]:
+        file = request.files["file-upload"]
+        filename = secure_filename(file.filename)
+        if filename != '':
+            file_ext = os.path.splitext(filename)[1]
+            # if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+            #     abort(400)
+            file.save(os.path.abspath(os.path.join(app.config['UPLOAD_PATH'], filename)))
+            return examen.import_vragen(os.path.abspath(os.path.join(app.config['UPLOAD_PATH'], filename)))
+        
+    return 'There was no file submitted in this request'
+    
 app.run()

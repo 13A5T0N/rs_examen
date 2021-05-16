@@ -1,0 +1,13 @@
+﻿Vraag,Antwoord1,Antwoord2,Antwoord3,Antwoord4,CorrecteAntwoord 
+How do you write 'Hello World' in an alert box?,msg('Hello World'),msgBox('Hello World');,alertBox('Hello World'),alert('Hello World'),3
+How to empty an array in JavaScript,arrayList[],arrayList(0),arrayList.length=0,arrayList.len(0),2
+ What function to add an element at the begining of an array and one at the end?,"push,unshift","unshift,push","first,push","unshift,last",1
+"What will this output? var a = [1, 2, 3]; console.log(a[6]);",undefined,0,prints nothing,Syntax error,0
+What would following code return? console.log(typeof typeof 1);,string,number,Syntax error,undefined,0
+Which software company developed JavaScript?,Mozilla,Netscape,Sun Microsystems,Oracle,1
+What would be the result of 3+2+'7'?,327,12,1212,57,3
+Look at the following selector: $('div'). What does it select?,The first div element,The last div element,All div elements,Current div element,2
+How can a value be appended to an array?,arr(length).value;,arr[arr.length]=value;,arr[]=add(value);,None of these,1
+What will the code below output to the console? console.log(1 + +'2' + '2');,32,122,13,14,0
+,,,,,
+, ,,,,
