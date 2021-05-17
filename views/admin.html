@@ -289,7 +289,7 @@
                   type="text"
                   name="subject"
                   class="form-control my-input"
-                  id="subject"
+                  id="titel"
                   placeholder="Titel"
                 />
               </div>
@@ -363,12 +363,26 @@
     <script src="../assets/demo/demo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      $(document).ready(function () {
-        // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-        demo.initChartsPages();
-      });
-    </script>
-    <script>
+      function uplaod() {
+        titel = document.getElementById("titel").value;
+        klas = document.getElementById("klasDropdown").value;
+        vak = document.getElementById("vakDropdown").value;
+          var fd = new FormData();
+          const file = $("#file")[0].files;
+          fd.append("klas", klas);
+          fd.append("vak", vak);
+          fd.append("titel", titel);
+          fd.append("file", file[0]);
+
+          $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:5000/examen/add",
+            data: fd,
+            processData: false,
+            contentType: false,
+          });
+      }
+
       $(document).ready(function () {
         $.ajax({
           type: "GET",
@@ -380,7 +394,7 @@
                 '<option value="' +
                 data[i].klas_id +
                 '">' +
-                data[i].klas_id +
+                data[i].klas +
                 "</option>";
             }
             $("#klasDropdown").html(s);
@@ -404,26 +418,6 @@
           },
         });
       });
-
-      function uplaod_examen() {
-        const titel = $("#subject").value;
-        const klas = $("#klas").value;
-        const vak = $("#vak").vallue;
-        var fd = new FormData();
-        const file = $("#file")[0].files;
-        fd.append("klas", klas);
-        fd.append("vak", vak);
-        fd.append("titel", titel);
-        fd.append("file", file[0]);
-
-        $.ajax({
-          type: "POST",
-          url: "http://127.0.0.1:5000/examen/add",
-          data: fd,
-          processData: false,
-          contentType: false,
-        });
-      }
     </script>
   </body>
 </html>

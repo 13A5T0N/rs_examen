@@ -9,5 +9,3 @@ What would be the result of 3+2+'7'?,327,12,1212,57,3
 Look at the following selector: $('div'). What does it select?,The first div element,The last div element,All div elements,Current div element,2
 How can a value be appended to an array?,arr(length).value;,arr[arr.length]=value;,arr[]=add(value);,None of these,1
 What will the code below output to the console? console.log(1 + +'2' + '2');,32,122,13,14,0
-,,,,,
-, ,,,,
